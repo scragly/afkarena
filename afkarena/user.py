@@ -21,6 +21,12 @@ class User:
         self.level: int = data["level"]
         self.is_main: bool = data.get("is_main", False)
 
+    def __repr__(self) -> str:
+        return f"<User {self.name} ({self.id})>"
+
+    def __str__(self) -> str:
+        return f"{self.name} ({self.id})"
+
     async def redeem_code(self, code: str) -> None:
         """Redeem a gift code for this user account."""
         await self.player.http.redeem_code(code, self.id)
