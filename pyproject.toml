@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "afkarena"
-version = "0.1.0"
+version = "0.1.1"
 description = "Simple API wrapper for the AFK Arena site https://cdkey.lilith.com/afk-global."
 authors = ["scragly <29337040+scragly@users.noreply.github.com>"]
 license = "MIT"
