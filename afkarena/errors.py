@@ -45,6 +45,11 @@ class AuthFailed(RequestError):
     _http_str = "err_wrong_code"
 
 
+class NoUsersFound(RequestError):
+    """Exception raised when no users were given by the API."""
+    pass
+
+
 class CodeError(RequestError):
     """Exception raised when a gift code was unable to be redeemed."""
     pass

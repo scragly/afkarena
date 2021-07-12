@@ -80,6 +80,9 @@ class Player:
         if not self.authenticated:
             await self.fetch_users()
 
+        if not self.users:
+            raise errors.NoUsersFound
+
         invalid_codes = []
         expired_codes = []
         used_codes = defaultdict(list)
