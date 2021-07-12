@@ -5,6 +5,8 @@ import typing as t
 if t.TYPE_CHECKING:
     from .player import Player
 
+__all__ = ("User",)
+
 
 class User:
     """

@@ -8,6 +8,8 @@ from . import cookiejar, errors
 
 log = logging.getLogger(__name__)
 
+__all__ = ("HTTPClient",)
+
 
 class HTTPClient:
     """Manages the sending of HTTP requests to the AFK Arena CDKey website."""

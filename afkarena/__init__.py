@@ -4,8 +4,10 @@ import logging
 
 from .player import Player
 
-
-__all__ = ("Player",)
+__all__ = ("Player", "PERSIST_COOKIES")
 
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
+
+
+PERSIST_COOKIES: bool = False

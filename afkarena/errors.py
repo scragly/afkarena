@@ -1,5 +1,10 @@
 import typing as t
 
+__all__ = (
+    "RequestError", "UIDTypeError", "AuthTypeError", "AuthExpired", "AuthFailed",
+    "CodeError", "CodeUsed", "CodeExpired", "CodeInvalid"
+)
+
 
 class RequestErrorBase(Exception):
     """Base logic for handling errors from returned AFK Arena requests."""

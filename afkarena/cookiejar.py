@@ -3,6 +3,8 @@ import shutil
 
 import aiohttp
 
+__all__ = ("PersistFileCookieJar",)
+
 
 class PersistFileCookieJar(aiohttp.CookieJar):
     """Cookie Jar that automatically updates cookie files in order to maintain auth persistance."""

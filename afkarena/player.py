@@ -8,6 +8,8 @@ from aiohttp import CookieJar
 from . import errors, http
 from .user import User
 
+__all__ = ("Player",)
+
 
 class Player:
     """
