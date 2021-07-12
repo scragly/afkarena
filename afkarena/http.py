@@ -3,6 +3,7 @@ import typing as t
 
 import aiohttp
 
+import afkarena
 from . import cookiejar, errors
 
 log = logging.getLogger(__name__)
@@ -13,9 +14,14 @@ class HTTPClient:
 
     _BASE: str = "https://cdkey.lilith.com/api/"
 
-    def __init__(self, player_id: int):
+    def __init__(self, player_id: int, *, cookie_jar: t.Optional[aiohttp.CookieJar] = None):
         self.id: int = player_id
-        cookie_jar = cookiejar.PersistFileCookieJar(self.id)
+        if cookie_jar:
+            cookie_jar = cookie_jar
+        elif afkarena.PERSIST_COOKIES:
+            cookie_jar = cookiejar.PersistFileCookieJar(self.id)
+        else:
+            cookie_jar = aiohttp.CookieJar()
         self.http_session: aiohttp.ClientSession = aiohttp.ClientSession(cookie_jar=cookie_jar)
 
     @property

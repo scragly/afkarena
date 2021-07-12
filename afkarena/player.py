@@ -3,8 +3,9 @@ from __future__ import annotations
 import typing as t
 from collections import defaultdict
 
-from afkarena import errors, http
+from aiohttp import CookieJar
 
+from . import errors, http
 from .user import User
 
 
@@ -15,9 +16,9 @@ class Player:
     A Player can have multiple in-game Users linked to their account.
     """
 
-    def __init__(self, uid: int):
+    def __init__(self, uid: int, *, cookie_jar: t.Optional[CookieJar] = None):
         self.id: int = uid
-        self.http = http.HTTPClient(uid)
+        self.http = http.HTTPClient(uid, cookie_jar=cookie_jar)
         self.users: t.Optional[t.Dict[int, User]] = None
         self.main: t.Optional[User] = None
         self.authenticated: bool = False
