@@ -67,3 +67,6 @@ class HTTPClient:
     async def redeem_code(self, code: str, player_id: t.Optional[int] = None) -> None:
         """Redeem gift code for a single game account, defaulting to using session ID."""
         await self._post("cd-key/consume", type="cdkey_web", cdkey=code, uid=player_id or self.id)
+
+    async def close(self):
+        await self.http_session.close()

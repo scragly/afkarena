@@ -38,6 +38,16 @@ class Player:
         name = self.users[self.id].name if self.users else "Unverified Player"
         return f"{name} ({self.id})"
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        asyncio.create_task(self.close())
+        return
+
+    async def close(self):
+        await self.http.close()
+
     async def verify(self, auth_code: int):
         """Verify user account using in-game authentication code."""
         await self.http.verify(auth_code)
